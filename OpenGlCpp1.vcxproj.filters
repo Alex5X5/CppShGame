@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Logic">
       <UniqueIdentifier>{408f003a-4f7e-4499-8e8d-ba4e2da9f4d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Logic\Math">
+      <UniqueIdentifier>{7f2c0f15-e409-485e-b080-677f3be6e4c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -42,22 +45,16 @@
     <ClCompile Include="Server.cpp">
       <Filter>Source Files\Server</Filter>
     </ClCompile>
-    <ClCompile Include="Client.cpp.cpp">
-      <Filter>Source Files\Client</Filter>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Client.h">
       <Filter>Header Files\Client</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Header Files\Client</Filter>
-    </ClInclude>
-    <ClInclude Include="Server.h">
-      <Filter>Header Files\Server</Filter>
     </ClInclude>
     <ClInclude Include="GameServer.h">
       <Filter>Header Files</Filter>
@@ -70,6 +67,15 @@
     </ClInclude>
     <ClInclude Include="ServerConnection.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3d.hpp">
+      <Filter>Header Files\Logic\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

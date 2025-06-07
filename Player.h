@@ -1,5 +1,6 @@
 #include <cstddef>
 #include "Drawable.h"
+#include <vector>
 
 using namespace std;
 
@@ -7,21 +8,22 @@ namespace shgame::game::logic
 {
 	class Player : Drawable 
 	{
-		public const int PLAYER_BYTE_LENGTH = 56;
+		public:
+			const int PLAYER_BYTE_LENGTH = 56;
 
-		public const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
+			const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
 
 
-		public static readonly int[] CIRCLE_OFFSETS = CalcCircleOffsets();
+			static vector<int> CIRCLE_OFFSETS;
 
-		public short WeaponCooldownTicks = 10;
-		public short weaponCooldownTicksDone = 10;
+			short WeaponCooldownTicks = 10;
+			short weaponCooldownTicksDone = 10;
 
-		public byte IsShooting = 0x0;
-		public short InitialBulletSpeed = 0x30;
+			byte IsShooting = 0x0;
+			short InitialBulletSpeed = 0x30;
 
-		public Vector3d Pos;
-		public Vector3d Dir = new(0, 0, 0);
+			Vector3d Pos;
+			Vector3d Dir = new(0, 0, 0);
 
 		public double Speed = 2;
 		private int Health_;
