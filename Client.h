@@ -12,6 +12,8 @@ class Client
     private:
         int port;
 
+
+
     protected:
         std::string hidden_name;
 
