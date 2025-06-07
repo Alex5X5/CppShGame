@@ -2,6 +2,7 @@
 #include <string>
 #include "glfw3.h"
 #include "asio.hpp"
+#include "glad/glad.h"
 
 
 class Person
@@ -28,21 +29,41 @@ void glfwErrorCallback(int error, const char* description) {
 }
 
 
-
-int main(int argc,      // Number of strings in array argv
-    char* argv[],   // Array of command-line argument strings
-    char* envp[])  // Array of environment variable strings
+int main()
 {
-    using namespace std;
-    int count;
-    // Display each command-line argument.
-    list<string> _args = {};
-    //cout << "\nCommand-line arguments:\n";
-    for (count = 0; count < argc; count++)
-        if (argv[count] == "a") {
-            std::cout << argv[count];
-        }
+    using namespace asio;
+    try
+    {
+        asio::io_context io_context(1);
+
+        asio::signal_set signals(io_context, SIGINT, SIGTERM);
+        signals.async_wait([&](auto, auto) { io_context.stop(); });
+
+        co_spawn(io_context, listener(), asio::detached);
+
+        io_context.run();
+    }
+    catch (std::exception& e)
+    {
+        std::printf("Exception: %s\n", e.what());
+    }
 }
+
+//int main(int argc,      // Number of strings in array argv
+//    char* argv[],   // Array of command-line argument strings
+//    char* envp[])  // Array of environment variable strings
+//{
+//    using namespace std;
+//    int count;
+//    // Display each command-line argument.
+//    list<string> _args = {};
+//    //cout << "\nCommand-line arguments:\n";
+//    
+//    for (count = 0; count < argc; count++)
+//        if (argv[count] == "a") {
+//            std::cout << argv[count];
+//        }
+//}
 
 int maien(int argc, char* argv[], char* envp[])
 {
@@ -58,6 +79,9 @@ int maien(int argc, char* argv[], char* envp[])
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window = glfwCreateWindow(1000, 1000, "fds", nullptr, nullptr);
+
+    
+
     if (!window) {
         std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
@@ -67,6 +91,7 @@ int maien(int argc, char* argv[], char* envp[])
     glfwMakeContextCurrent(window);
 
     while (!glfwWindowShouldClose(window)) {
+        //glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(float), nullptr);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

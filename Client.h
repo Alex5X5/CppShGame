@@ -1,23 +1,15 @@
 #pragma once
 #include <string>
-#include <cstdlib>
-#include <iostream>
-#include <memory>
-#include <utility>
 
-
+using namespace std;
 
 class Client
 {
-    private:
-        int port;
+public:
+    
+    void set_name(string name) {};
 
-
-
-    protected:
-        std::string hidden_name;
-
-    public:
-        Client();
+protected:
+    string hidden_name;
 };
 
