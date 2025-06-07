@@ -137,10 +137,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
+    <ClInclude Include="GameServer.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="NetHandler.h" />
+    <ClInclude Include="Protocoll.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="ServerConnection.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
