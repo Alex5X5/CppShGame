@@ -9,11 +9,13 @@
 
 class Client
 {
-public:
-    Client();
-    void work();
-    void set_name(std::string name);
-protected:
-    std::string hidden_name;
+    private:
+        int port;
+
+    protected:
+        std::string hidden_name;
+
+    public:
+        Client();
 };
 
