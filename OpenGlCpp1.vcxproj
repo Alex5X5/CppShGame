@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="GameInstance.h" />
     <ClInclude Include="GameServer.h" />
     <ClInclude Include="NetHandler.h" />
     <ClInclude Include="Protocoll.h" />

@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Logic\Math">
       <UniqueIdentifier>{7f2c0f15-e409-485e-b080-677f3be6e4c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Net">
+      <UniqueIdentifier>{66aa2329-085d-4d28-8d1d-24c5cf84c124}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -56,18 +59,6 @@
     <ClInclude Include="Renderer.h">
       <Filter>Header Files\Client</Filter>
     </ClInclude>
-    <ClInclude Include="GameServer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NetHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Protocoll.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ServerConnection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +67,21 @@
     </ClInclude>
     <ClInclude Include="Vector3d.hpp">
       <Filter>Header Files\Logic\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInstance.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServer.h">
+      <Filter>Header Files\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="NetHandler.h">
+      <Filter>Header Files\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocoll.h">
+      <Filter>Header Files\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerConnection.h">
+      <Filter>Header Files\Net</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
