@@ -1,11 +1,5 @@
 #pragma once
 namespace shgame::game::net {
-	//using shgame::game::client;
-
-	//using System.Net;
-	//using System.Net.Sockets;
-	//using System.Threading;
-
 
 	using byte = unsigned char;
 

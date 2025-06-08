@@ -13,7 +13,7 @@ namespace shgame::game::net {
 	private:
 		/*readonly*/ tcp _socket;
 		bool stop = false;
-		// /*readonly*/ Logger logger;
+		/*readonly*/ Logger logger;
 
 		bool ReceivePacket(ref byte[] buffer) {
 			if (!_socket.Connected)
