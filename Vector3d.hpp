@@ -5,7 +5,7 @@
 #define typedef Vector3d {}
 
 
-namespace shgamme::logic::math
+namespace shgame::logic::math
 {
 	struct Vector3d {
 		public:
@@ -55,7 +55,7 @@ namespace shgamme::logic::math
 				return set(vector.x, vector.y, vector.z);
 			}
 
-			Vector3d Cpy()
+			Vector3d Cpy() const
 			{
 				return *this;
 			}
@@ -125,7 +125,7 @@ namespace shgamme::logic::math
 				return sqrt(x * x + y * y + z * z);
 			}
 
-			double len()
+			double len() const
 			{
 				return sqrt(x * x + y * y + z * z);
 			}
@@ -135,12 +135,12 @@ namespace shgamme::logic::math
 				return x * x + y * y + z * z;
 			}
 
-			double len2()
+			double len2() const
 			{
 				return x * x + y * y + z * z;
 			}
 
-			bool idt(Vector3d vector)
+			bool idt(Vector3d vector) const
 			{
 				return x == vector.x && y == vector.y && z == vector.z;
 			}
@@ -153,7 +153,7 @@ namespace shgamme::logic::math
 				return (double)sqrt(a * a + b * b + c * c);
 			}
 
-			double dst(Vector3d vector)
+			double dst(Vector3d vector) const
 			{
 				double a = vector.x - x;
 				double b = vector.y - y;
@@ -177,7 +177,7 @@ namespace shgamme::logic::math
 				return a * a + b * b + c * c;
 			}
 
-			double dst2(Vector3d* point)
+			double dst2(Vector3d* point) const
 			{
 				double a = point->x - x;
 				double b = point->y - y;
