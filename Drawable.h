@@ -1,7 +1,7 @@
 #pragma once
 using namespace std;
 
-namespace shgame::game::logic
+namespace shgame::rendering	
 {
 
 	class Drawable

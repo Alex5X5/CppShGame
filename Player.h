@@ -12,19 +12,15 @@
 using namespace std;
 using namespace shgame::logic::math;
 
-namespace shgame::game::logic
+namespace shgame::logic
 {
-	class Player : Drawable 
+	class Player : shgame::rendering::Drawable
 	{
 
 		private:
-			int Health_;
-			static const int PLAYER_BYTE_LENGTH = 56;
-
-			static const int Radius = 10;
-			static const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
-
 			static const vector<int> CIRCLE_OFFSETS;
+
+			float _health;
 
 			short WeaponCooldownTicks = 10;
 			short weaponCooldownTicksDone = 10;
@@ -41,24 +37,41 @@ namespace shgame::game::logic
 			
 
 		public:
+			static const int PLAYER_BYTE_LENGTH = 56;
+			static const int Radius = 10;
+			
+			void setHealth();
+			float getHealth();
+
+			int getSpeed();
+			void setSpeed();
+
+			short getUUID();
+			void setUUID();
+
+			Vector3d getPos();
+			void setPos();
+
+			Vector3d getDir();
+			void setDir();
+
+			static const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
+			
 			static vector<int> CalcCircleOffsets();
 
 			Player(Vector3d newPos, int newHealth, short UUID);
-
 			Player();
 
 			string ToString();
 
-			void Move();
+			void move();
+			void damage(int damage);
+			void deactivate();
 
-			void Damage(int damage);
-	
-			void Deactivate();
+			void onKeyEvent(Client c);
 
-			void OnKeyEvent(Client c);
-		
-			static void SerializePlayer(byte* buffer, Player player, int offset);
+			static void serializePlayer(byte* buffer, Player player, int offset);
 			
-			static void DeserializePlayer(byte* buffer, Player player, int offset);
+			static void deserializePlayer(byte* buffer, Player player, int offset);
 	};
 }

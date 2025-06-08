@@ -2,7 +2,7 @@
 #include <string>
 #include "glfw3.h"
 #include "asio.hpp"
-#include "glad/glad.h"
+//#include "glad/glad.h"
 
 
 class Person
@@ -39,7 +39,7 @@ int main()
         asio::signal_set signals(io_context, SIGINT, SIGTERM);
         signals.async_wait([&](auto, auto) { io_context.stop(); });
 
-        co_spawn(io_context, listener(), asio::detached);
+        //co_spawn(io_context, listener(), asio::detached);
 
         io_context.run();
     }
