@@ -4,6 +4,7 @@
 #include "Drawable.h";
 #include "ServerConnection.h"
 #include "Player.h"
+#include "GameInstance.h"
 
 using namespace asio;
 using namespace asio::ip;
@@ -26,17 +27,17 @@ namespace shgame::net
 			tcp::endpoint endpoint;
 			tcp::acceptor acceptor;
 
+			GameInstance game;
+
 			void OnAccept(tcp::endpoint socket);
 
-			bool IsPlayerRegistered(Player player);
+			bool IsPlayerRegistered(shgame::logic::Player player);
 
-			bool RegisterNewPlayer(Player player);
+			bool RegisterNewPlayer(shgame::logic::Player player);
 
 			void DisposeObjects();
 
-			void ClockLoop();
-
-			void AcceptLoop();
+			void acceptLoop();
 
 
 		public:
@@ -48,21 +49,25 @@ namespace shgame::net
 			static const int MAX_PLAYER_COUNT = 20;
 			static const int OBSTACLE_COUNT = OBSTACKLE_ROWS * OBSTACKLE_LINES, BULLET_COUNT = 200;
 
-			GameServer();
+			GameServer() = default;
 
 			GameServer(int port);
 
-			GameServer(asio::ip::address address, int port);
+			GameServer(asio::ip::address_v4 address, int port);
 
 
-			byte* OnMapRequest();
+			byte* onMapRequest(std::byte* packet);
 
-			byte* OnPingRequest(byte* packet);
+			byte* onPingRequest(byte* packet);
 
-			byte* OnPlayerRequest(byte* packet);
+			byte* onRegisterPlayerRequest(byte* packet);
+
+			byte* onExchangePlayerRequest(byte* packet);
+
+			byte* onBulletRequest(byte* packet);
 
 
-			void Stop();
+			void stop();
 
 			static address_v4 GetLocalIPv4();
 

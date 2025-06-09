@@ -55,32 +55,37 @@ namespace shgame::logic::math
 				return set(vector.x, vector.y, vector.z);
 			}
 
+			Vector3d* set(Vector3d* vector)
+			{
+				return set(vector->x, vector->y, vector->z);
+			}
+
 			Vector3d Cpy() const
 			{
 				return *this;
 			}
 
-			Vector3d* Add(Vector3d vector)
+			Vector3d* add(Vector3d vector)
 			{
-				return Add(vector.x, vector.y, vector.z);
+				return add(vector.x, vector.y, vector.z);
 			}
 
-			Vector3d* Add(double _x, double _y, double _z)
+			Vector3d* add(double _x, double _y, double _z)
 			{
 				return set(x + _x, y + _y, z + _z);
 			}
 
-			Vector3d* Add(double values)
+			Vector3d* add(double values)
 			{
 				return set(x + values, y + values, z + values);
 			}
 
-			Vector3d* Sub(Vector3d a_vec)
+			Vector3d* sub(Vector3d a_vec)
 			{
 				return Sub(a_vec.x, a_vec.y, a_vec.z);
 			}
 
-			Vector3d* Sub(double _x, double _y, double _z) {
+			Vector3d* sub(double _x, double _y, double _z) {
 				return set(x - _x, y - _y, z - _z);
 			}
 
@@ -94,9 +99,9 @@ namespace shgame::logic::math
 				return set(x * scalar, y * scalar, z * scalar);
 			}
 
-			Vector3d* scl(Vector3d other)
+			Vector3d* scl(Vector3d a_vec)
 			{
-				return set(x * other.x, y * other.y, z * other.z);
+				return set(x * a_vec.x, y * a_vec.y, z * a_vec.z);
 			}
 
 			Vector3d* scl(double vx, double vy, double vz)

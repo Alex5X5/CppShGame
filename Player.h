@@ -20,40 +20,39 @@ namespace shgame::logic
 		private:
 			static const vector<int> CIRCLE_OFFSETS;
 
-			float _health;
-
 			short WeaponCooldownTicks = 10;
 			short weaponCooldownTicksDone = 10;
 
 			bool IsShooting = false;
 			short InitialBulletSpeed = 0x30;
 
-			Vector3d Pos = Vector3d(100,100,0);
-			Vector3d Dir = Vector3d(0, 0, 0);
+			Vector3d pos = Vector3d(100,100,0);
+			Vector3d dir = Vector3d(0, 0, 0);
 
-			double Speed = 2;
-			short PlayerUUID = 0;
-			bool Visible;
+			double health;
+			double speed = 2;
+			short uuid = 0;
+			bool visible;
 			
 
 		public:
 			static const int PLAYER_BYTE_LENGTH = 56;
 			static const int Radius = 10;
 			
-			void setHealth();
-			float getHealth();
+			double getHealth() const;
+			void setHealth(double _health);
 
-			int getSpeed();
-			void setSpeed();
+			double getSpeed() const;
+			void setSpeed(double _speed);
 
-			short getUUID();
-			void setUUID();
+			short getUUID() const;
+			void setUUID(short _uuid);
 
-			Vector3d getPos();
-			void setPos();
+			Vector3d getPos() const;
+			void setPos(Vector3d* _pos);
 
-			Vector3d getDir();
-			void setDir();
+			Vector3d getDir() const;
+			void setDir(Vector3d* _dir);
 
 			static const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
 			
