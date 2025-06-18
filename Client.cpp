@@ -1,8 +1,9 @@
-#pragma once
-
 #include "Client.h"
 
+shgame::Client::Client()
+{
 
+}
 
 /// <summary>
 /// This class contains the main entry point for the programm.

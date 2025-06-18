@@ -1,22 +1,18 @@
 #pragma once
 
-#include "asio.hpp"
-#include "GameServer.h"
-
 using namespace asio::ip;
-using namespace shgame::game::net;
 
-namespace shgame::game::net {
+namespace shgame::net {
 
 	class ServerConnection {
 		private:
-			/*readonly*/ tcp _socket;
+			/*readonly*/ tcp::endpoint socket;
 			bool stop = false;
 
 			bool ReceivePacket();
 			void SendPacket();
 
-			void Run(shgame::net::GameServer gs);
+			void Run();
 
 		public:
 			int disposalCooldown = 100;

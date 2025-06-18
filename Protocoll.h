@@ -1,6 +1,6 @@
 #pragma once
 
-namespace ShGame::Game::Net {
+namespace shgame::net {
 
 	using byte = unsigned char;
 

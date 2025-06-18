@@ -2,9 +2,6 @@
 #include <math.h>
 #include <string.h>
 
-#define typedef Vector3d {}
-
-
 namespace shgame::logic::math
 {
 	struct Vector3d {
@@ -35,12 +32,6 @@ namespace shgame::logic::math
 			};
 
 			Vector3d() : Vector3d(0, 0, 0){};
-
-			//Vector3d(Vector3d vector);
-
-			//Vector3d(double[] values) {
-			//	set(values[0], values[1], values[2]);
-			//}
 
 			Vector3d* set(double x_, double y_, double z_)
 			{
@@ -82,14 +73,14 @@ namespace shgame::logic::math
 
 			Vector3d* sub(Vector3d a_vec)
 			{
-				return Sub(a_vec.x, a_vec.y, a_vec.z);
+				return sub(a_vec.x, a_vec.y, a_vec.z);
 			}
 
 			Vector3d* sub(double _x, double _y, double _z) {
 				return set(x - _x, y - _y, z - _z);
 			}
 
-			Vector3d* Sub(double value)
+			Vector3d* sub(double value)
 			{
 				return set(x - value, y - value, z - value);
 			}

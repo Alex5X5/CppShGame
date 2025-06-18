@@ -1,15 +1,19 @@
 #pragma once
 #include <string>
+#include "GameInstance.h"
 
-using namespace std;
-
-class Client
+namespace shgame
 {
-public:
-    
-    void set_name(string name) {};
+    class Client
+    {
+    private:
+        shgame::logic::GameInstance* game;
 
-protected:
-    string hidden_name;
-};
+    public:
+        Client();
+
+    protected:
+        string hidden_name;
+    };
+}
 

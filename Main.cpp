@@ -1,69 +1,38 @@
+#include "glad.h"
+#include "Libraries/includes/include/glfw3.h"
+#include <windows.h>
 #include <iostream>
-#include <string>
-#include "glfw3.h"
-#include "asio.hpp"
-//#include "glad/glad.h"
-
-
-class Person
-{
-public:
-    Person() { hidden_name = "unknown"; };
-    Person(std::string name) { hidden_name = name; };
-    void work() {
-        std::cout << hidden_name << " is working - useless." << std::endl; };
-    void set_name(std::string name) { hidden_name = name; };
-protected:
-    std::string hidden_name;
-};
-
-class Specialist : public Person 
-{
-    public:
-        Specialist() : Person() {};
-        void work() { std::cout << hidden_name << " is working - succeess!" << std::endl; };
-};
+#include <list>
+#include "Renderer.h"
 
 void glfwErrorCallback(int error, const char* description) {
     std::cerr << "GLFW Error (" << error << "): " << description << std::endl;
 }
 
 
-int main()
+
+int main(int argc,      // Number of strings in array argv
+    char* argv[],   // Array of command-line argument strings
+    char* envp[])  // Array of environment variable strings
 {
-    using namespace asio;
-    try
-    {
-        asio::io_context io_context(1);
+    using namespace std;
+    int count;
+    // Display each command-line argument.
+    list<string> _args = {};
+    //cout << "\nCommand-line arguments:\n";
 
-        asio::signal_set signals(io_context, SIGINT, SIGTERM);
-        signals.async_wait([&](auto, auto) { io_context.stop(); });
+    //asio::io_context my_context;
+    //asio::ip::tcp::acceptor acceptor(my_context);
+    //asio::ip::tcp::endpoint endpoint(asio::ip::tcp::v4(), 1000);
+    //acceptor.open(endpoint.protocol());
+    //acceptor.set_option(asio::ip::tcp::acceptor::reuse_address(true));
+    //acceptor.bind(endpoint);
+    //acceptor.listen();
 
-        //co_spawn(io_context, listener(), asio::detached);
-
-        io_context.run();
-    }
-    catch (std::exception& e)
-    {
-        std::printf("Exception: %s\n", e.what());
-    }
+    
+    shgame::rendering::Renderer r = shgame::rendering::Renderer();
+    r.run();
 }
-
-//int main(int argc,      // Number of strings in array argv
-//    char* argv[],   // Array of command-line argument strings
-//    char* envp[])  // Array of environment variable strings
-//{
-//    using namespace std;
-//    int count;
-//    // Display each command-line argument.
-//    list<string> _args = {};
-//    //cout << "\nCommand-line arguments:\n";
-//    
-//    for (count = 0; count < argc; count++)
-//        if (argv[count] == "a") {
-//            std::cout << argv[count];
-//        }
-//}
 
 int maien(int argc, char* argv[], char* envp[])
 {

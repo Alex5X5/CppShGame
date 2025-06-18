@@ -1,43 +1,66 @@
 #include "Player.h"
 
-using namespace shgame::logic;
+void shgame::logic::Player::setHealth(double _health) { health = _health; }
+double shgame::logic::Player::getHealth() const { return health; }
 
-void Player::setHealth(double _health) { health = _health; }
-double Player::getHealth() const { return health; }
+void shgame::logic::Player::setSpeed(double _speed) { speed = _speed; }
+double shgame::logic::Player::getSpeed() const { return speed; }
 
-void Player::setSpeed(double _speed) { speed = _speed; }
-double Player::getSpeed() const { return speed; }
+void shgame::logic::Player::setUUID(short _uuid) { uuid = _uuid; }
+short shgame::logic::Player::getUUID() const { return uuid; }
 
-void Player::setUUID(short _uuid) { uuid = _uuid; }
-short Player::getUUID() const { return uuid; }
+void shgame::logic::Player::setPos(shgame::logic::math::Vector3d* _pos) { pos.set(_pos); }
+shgame::logic::math::Vector3d shgame::logic::Player::getPos() const { return pos; }
 
-void Player::setPos(Vector3d* _pos) { pos.set(_pos); }
-Vector3d Player::getPos() const { return pos; }
+void shgame::logic::Player::setDir(shgame::logic::math::Vector3d* _dir) { dir.set(_dir);}
+shgame::logic::math::Vector3d shgame::logic::Player::getDir() const { return dir; }
 
-void Player::setDir(Vector3d* _dir) { dir.set(_dir);}
-Vector3d Player::getDir() const { return dir; }
+vector<int> shgame::logic::Player::calcCircleOffsets()
+{
+	return vector<int>();
+}
 
-vector<int> Player::CalcCircleOffsets()
+void shgame::logic::Player::updateVertices()
+{
+}
+
+shgame::logic::Player::Player()
+{
+}
+
+shgame::logic::Player::Player(shgame::logic::math::Vector3d newPos, int newHealth, short UUID)
+{
+}
+
+string shgame::logic::Player::ToString()
+{
+	return "";
+}
+
+void shgame::logic::Player::move()
 {
 
 }
 
-void Player::move()
+void shgame::logic::Player::damage(int damage)
+{
+}
+
+void shgame::logic::Player::deactivate()
+{
+}
+
+void shgame::logic::Player::onKeyEvent(std::tuple<bool, bool, bool, bool>* pressedKeys)
 {
 
 }
 
-void Player::onKeyEvent(Client c)
+void shgame::logic::Player::serializePlayer(unsigned char* buffer, shgame::logic::Player player, int offset)
 {
 
 }
 
-void Player::serializePlayer(byte* buffer, Player player, int offset)
-{
-
-}
-
-void Player::deserializePlayer(byte* buffer, Player player, int offset)
+void shgame::logic::Player::deserializePlayer(unsigned char* buffer, shgame::logic::Player player, int offset)
 {
 
 }

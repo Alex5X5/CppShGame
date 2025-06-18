@@ -1,76 +1,74 @@
-#include <cstddef>
+#pragma once
 #include <vector>
 
-#define _USE_MATH_DEFINES
 #include <cmath>
 #include <string>
 
-#include "Vector3d.hpp"
 #include "Drawable.h"
-#include "Client.h"
-
-using namespace std;
-using namespace shgame::logic::math;
+#include "Vector3d.hpp"
 
 namespace shgame::logic
 {
-	class Player : shgame::rendering::Drawable
-	{
+    class Player : public shgame::rendering::Drawable
+    {
 
-		private:
-			static const vector<int> CIRCLE_OFFSETS;
+        private:
+            static const std::vector<int> CIRCLE_OFFSETS;
 
-			short WeaponCooldownTicks = 10;
-			short weaponCooldownTicksDone = 10;
+            short WeaponCooldownTicks;
+            short weaponCooldownTicksDone;
 
-			bool IsShooting = false;
-			short InitialBulletSpeed = 0x30;
+            bool IsShooting;
+            short InitialBulletSpeed;
 
-			Vector3d pos = Vector3d(100,100,0);
-			Vector3d dir = Vector3d(0, 0, 0);
+            shgame::logic::math::Vector3d pos;
+            shgame::logic::math::Vector3d dir;
 
-			double health;
-			double speed = 2;
-			short uuid = 0;
-			bool visible;
-			
+            double health;
+            double speed;
+            short uuid;
+            bool visible;
+        
+        public:
+            static const int Radius = 10;
+            static const int PLAYER_BYTE_LENGTH = 56;
+            
+        public:
+            double getHealth() const;
+            void setHealth(double _health);
 
-		public:
-			static const int PLAYER_BYTE_LENGTH = 56;
-			static const int Radius = 10;
-			
-			double getHealth() const;
-			void setHealth(double _health);
+            double getSpeed() const;
+            void setSpeed(double _speed);
 
-			double getSpeed() const;
-			void setSpeed(double _speed);
+            short getUUID() const;
+            void setUUID(short _uuid);
 
-			short getUUID() const;
-			void setUUID(short _uuid);
+            shgame::logic::math::Vector3d getPos() const;
+            void setPos(shgame::logic::math::Vector3d* _pos);
 
-			Vector3d getPos() const;
-			void setPos(Vector3d* _pos);
+            shgame::logic::math::Vector3d getDir() const;
+            void setDir(shgame::logic::math::Vector3d* _dir);
 
-			Vector3d getDir() const;
-			void setDir(Vector3d* _dir);
+            static const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
+            
+            static std::vector<int> calcCircleOffsets();
+            
+            void updateVertices() override;
 
-			static const int SIZE = 20, SIDES_COUNT = 50, FLOAT_COUNT = 9 * SIDES_COUNT;
-			
-			static vector<int> CalcCircleOffsets();
+            Player();
+            Player(shgame::logic::math::Vector3d newPos, int newHealth, short UUID);
 
-			Player(Vector3d newPos, int newHealth, short UUID);
-			Player();
+            string ToString();
 
-			string ToString();
+            void move();
+            void damage(int damage);
+            void deactivate();
 
-			void move();
-			void damage(int damage);
-			void deactivate();
 
-			void onKeyEvent(Client c);
+            void onKeyEvent(std::tuple<bool, bool, bool, bool>* pressedKeys);
 
-			static void serializePlayer(byte* buffer, Player player, int offset);
-			
-			static void deserializePlayer(byte* buffer, Player player, int offset);
-	};
+            static void serializePlayer(unsigned char* buffer, shgame::logic::Player player, int offset);
+            
+            static void deserializePlayer(unsigned char* buffer, Player player, int offset);
+    };
 }
